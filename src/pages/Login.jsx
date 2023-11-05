@@ -1,4 +1,4 @@
-import ContactInput from "../component/ContactInput";
+import Input from "../component/Input";
 
 
 export default function LogIn() {
@@ -12,15 +12,15 @@ export default function LogIn() {
             <div className="space-y-5">
               <div>
                 <label for="email" className="text-gray-600 text-md mb-2 capitalize block">email address</label>
-                <ContactInput type="email" className="block text-sm w-full border border-gray-300 rounded px-4 py-3 focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="email@gmail.com" />
+                <Input type="email" className="block text-sm w-full border border-gray-300 rounded px-4 py-3 focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="email@gmail.com" />
               </div>
               <div>
                 <label for="password" className="text-gray-600 text-md mb-2 capitalize block">password</label>
-                <ContactInput type="password" className="block text-sm w-full border border-gray-300 rounded px-4 py-3 focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="*********" />
+                <Input type="password" className="block text-sm w-full border border-gray-300 rounded px-4 py-3 focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="*********" />
               </div>
               <div className="flex items-center justify-between mt-6">
                 <div className="flex items-center gap-2">
-                  <ContactInput type="checkbox" id="checkbox" className="text-primary focus:ring-0 cursor-pointer" />
+                  <Input type="checkbox" id="checkbox" className="text-primary focus:ring-0 cursor-pointer" />
                   <label for="checkbox" className="text-gray-400 text-sm capitalize">remember</label>
                 </div>
                 <a href="" className="text-primary text-sm capitalize">forget password?</a>

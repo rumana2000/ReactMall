@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 import { useParams } from "react-router-dom"
-import SingleSideberProducts from "../component/SingleSideberProducts";
+import SingleProduct from "../component/SingleProduct";
 
 export default function CategoryPage() {
 
@@ -21,13 +21,13 @@ export default function CategoryPage() {
 
   return (
     <>
-    <div className="container  py-10">
-    <h2 className="font-bold text-4xl text-gray-800 flex items-center justify-center uppercase">{slug}</h2>
-    </div>
-     <div className="container grid grid-cols-4 gap-6 py-16 items-start">
+      <div className="container  py-10">
+        <h2 className="font-bold text-4xl text-gray-800 flex items-center justify-center uppercase">{slug}</h2>
+      </div>
+      <div className="container grid grid-cols-4 gap-6 py-16 items-start">
         <div className="col-span-4">
           <div className="grid grid-cols-3 gap-6 items-center justify-center">
-          { categoryProducts && categoryProducts.map(product => <SingleSideberProducts productInfo={product} />) } 
+            {categoryProducts && categoryProducts.map(product => <SingleProduct productInfo={product} />)}
           </div>
         </div>
       </div>

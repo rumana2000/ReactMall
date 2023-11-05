@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 export default function Rating({ ratings }) {
   const [ratingState, setRatingState] = useState(['empty', 'empty', 'empty', 'empty', 'empty'])
   useEffect(() => {
-    console.log(ratings);
     let rateRound = Math.floor(ratings)
     let rateFloat = ratings - rateRound
     for (let i = 0; i < rateRound; i++) {
@@ -27,7 +26,7 @@ export default function Rating({ ratings }) {
         } else if (rate === 'empty') {
           return <img src={empty} alt="" className="w-6 h-6" />;
         } else {
-          return null; // or any other fallback element
+          return null;
         }
       })}
     </>

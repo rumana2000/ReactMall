@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import imgShoping from "../assets/Image/shopping-bag.png"
-import ContactInput from './ContactInput'
 import Nav from './Nav'
-
+import SearchProduct from "./SearchProduct"
 // import your icons
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -21,13 +20,11 @@ export default function Header() {
               <img src={imgShoping} alt="" className="w-14" />
             </a>
           </div>
-          <div className="w-full max-w-xl relative flex">
+          <div className="w-full max-w-xl relative cursor-pointer flex group">
             <span className="absolute left-4 top-3 text-lg text-gray-400">
               <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
             </span>
-            <ContactInput type="text" className="w-full border border-primary border-r-0 pl-12 py-3 rounded-l-md focus:ring-0  focus:ring-primary" placeholder="Search" />
-            <button
-              className="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition">Search</button>
+            <SearchProduct />
           </div>
           <div className="flex item-center space-x-4">
             <a href="#" className="text-center text-gray-700 hover:text-primary transition relative">

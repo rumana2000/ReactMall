@@ -2,7 +2,7 @@ import Bredcrums from "../component/Bredcrums"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Sideber from "../component/Sideber"
-import SingleSideberProducts from "../component/SingleSideberProducts"
+import SingleProduct from "../component/SingleProduct"
 
 export default function Shop() {
   const [allCatagorys, setAllCatagorys] = useState([])
@@ -35,7 +35,7 @@ export default function Shop() {
         <Sideber allCatagorys={allCatagorys} categoryRadioFilterOnChnage={categoryFilterOnChnageHanderler} />
         <div className="col-span-3">
           <div className="grid grid-cols-4 gap-4">
-            {categoryProducts && categoryProducts.map(product => <SingleSideberProducts productInfo={product} />)}
+            {categoryProducts && categoryProducts.map(product => <SingleProduct productInfo={product} />)}
           </div>
         </div>
 

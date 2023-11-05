@@ -1,4 +1,4 @@
-import ContactInput from "../component/ContactInput"
+import Input from "../component/Input"
 export default function Contact() {
   return (
     <>
@@ -18,7 +18,7 @@ export default function Contact() {
             Nobis minus voluptatibus pariatur dignissimos libero quaerat iure expedita at? Asperiores nemo possimus nesciunt
             dicta veniam aspernatur quam mollitia.
             <div className="flex items-center gap-6 py-3">
-              <ContactInput type="text" className="border border-primary rounded flex items-center justify-center focus:ring-0 focus:border-primary" placeholder="Enter Your E-mail" />
+              <Input type="text" className="border border-primary rounded flex items-center justify-center focus:ring-0 focus:border-primary" placeholder="Enter Your E-mail" />
               <div className="py-4">
                 <a href="" className="border border-primary bg-primary text-sm text-white py-3 px-3 rounded">Contact Now</a>
               </div>
