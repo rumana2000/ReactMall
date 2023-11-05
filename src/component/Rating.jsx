@@ -15,7 +15,7 @@ export default function Rating({ ratings }) {
     if (rateFloat > 0) {
       ratingState[rateRound] = 'half'
     }
-  }, [])
+  }, [ratings])
   return (
     <>
       {ratingState.map((rate) => {
