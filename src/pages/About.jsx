@@ -14,8 +14,8 @@ export default function About() {
   return (
     <>
       <div className="container py-16">
-        <div className="grid grid-cols-2 items-center justify-center gap-6">
-          <div className="grid grid-cols-3 py-4 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 items-center justify-center gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3  py-4 gap-2">
             <img src={productImg1} alt="" className=" hover:scale-90  overflow-hidden" />
             <img src={productImg2} alt="" className=" hover:scale-90  overflow-hidden" />
             <img src={productImg3} alt="" className=" hover:scale-90  overflow-hidden" />

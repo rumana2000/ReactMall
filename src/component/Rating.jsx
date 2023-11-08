@@ -19,9 +19,9 @@ export default function Rating({ ratings }) {
   return (
     <>
       {ratingState.map((rate) => {
-        if (rate === 'full') {
+        if (rate == 'full') {
           return <img src={fullstar} alt="" className="w-6 h-6" />;
-        } else if (rate === 'half') {
+        } else if (rate == 'half') {
           return <img src={halfRating} alt="" className="w-6 h-6" />;
         } else if (rate === 'empty') {
           return <img src={empty} alt="" className="w-6 h-6" />;

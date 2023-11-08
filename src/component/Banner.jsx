@@ -4,7 +4,7 @@ export default function Banner() {
   return (
     <>
       <div className="bg-cover bg-no-repeat bg-center py-36 banner">
-        <div className="container">
+        <div className="container min-w-sm max-auto">
           <h1 className="text-6xl text-blue-950 mb-4 capitalize">best collection for<br/> home decoration</h1>
           <p className="text-2xl text-gray-800">Lorem ipsum dolor sit amet pariatur,volup<br/>tatem delectus numquam rem
             molestiae

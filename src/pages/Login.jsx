@@ -5,7 +5,7 @@ export default function LogIn() {
   return (
     <>
       <div className="container py-16">
-        <div className="w-10/12 mx-auto shadow rounded px-3 py-4 overflow-hidden">
+        <div className="max-w-xl mx-auto shadow rounded px-3 py-4 overflow-hidden">
           <h2 className="text-2xl font-medium capitalize mb-1">login</h2>
           <p className="text-gray-500 text-sm mb-6">login if you are returing customer</p>
           <form action="">

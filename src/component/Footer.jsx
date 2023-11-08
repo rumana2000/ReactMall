@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <div>
       <div className="bg-white border-t border-gray-200 py-16">
-        <div className="container grid grid-cols-3">
+        <div className="container grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 mx-auto">
           <div className="col-sapn-4 space-y-4 gap-6">
             <div className="flex items-center">
               <h3 className="text-primary text-5xl">Buy</h3>
@@ -33,7 +33,7 @@ export default function Footer() {
             </div>
           </div>
           {/* <!-- footer links --> */}
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">
             <div className="col-span-4 flex justify-between items-center gap-6">
               <div className="space-x-6">
                 <h3 className="text-gray-400 text-sm font-semibold uppercase tracking-wider px-6">soulutions</h3>
