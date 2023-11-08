@@ -38,18 +38,18 @@ export default function Shop() {
 
   let setPanigationPage = (index) => {
     setCurrentPage(index - 1)
-    
+
   }
 
   let nextPageHandler = () => {
-    let totalPage  = Math.ceil(totalProduct / perPage) - 1
+    let totalPage = Math.ceil(totalProduct / perPage) - 1
     if (currentPage < totalPage) {
       setCurrentPage(currentPage + 1)
     }
   }
 
   let previousPageHandler = () => {
-    let totalPage  = Math.ceil(totalProduct / perPage)
+    let totalPage = Math.ceil(totalProduct / perPage)
     if (currentPage < totalPage && currentPage > 0) {
       setCurrentPage(currentPage - 1)
     }
@@ -67,7 +67,7 @@ export default function Shop() {
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {categoryProducts && categoryProducts.map(product => <SingleProduct productInfo={product} />)}
           </div>
-          {categoryProducts && <Pagination numberOfPanination={Math.ceil(totalProduct / perPage)} pgh={setPanigationPage} currentPage= {currentPage} nextPageHandler={nextPageHandler} previousPageHandler = {previousPageHandler}/>}
+          {categoryProducts && <Pagination numberOfPanination={Math.ceil(totalProduct / perPage)} pgh={setPanigationPage} currentPage={currentPage} nextPageHandler={nextPageHandler} previousPageHandler={previousPageHandler} />}
         </div>
       </div>
 
