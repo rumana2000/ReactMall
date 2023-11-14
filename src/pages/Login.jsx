@@ -1,22 +1,60 @@
+import { useEffect, useState } from "react";
 import Input from "../component/Input";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {LOCALSTORAGE_AUTH_USER_KEY} from "../constant"
 
 export default function LogIn() {
+  const [userName, setUserName] = useState('kminchelle')
+  const [password, setPassword] = useState('0lelplR')
+  let navigate = useNavigate()
+
+    useEffect(() => {
+      let authUser = localStorage.getItem(LOCALSTORAGE_AUTH_USER_KEY);
+      console.log(authUser);
+      if (authUser) {
+        return navigate("/")
+
+      }else {
+        return navigate("/login")
+      }
+    },[])
+
+
+
+  let handelSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      let res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, {
+        username: userName,
+        password: password
+      })
+      if (res.data.token) {
+        console.log(res.data);
+        localStorage.setItem(LOCALSTORAGE_AUTH_USER_KEY, JSON.stringify(res.data))
+        return navigate("/")
+      }
+      console.log(res.data);
+    } catch (err) {
+      console.log(err.response.data.message);
+    }
+  }
+
   return (
     <>
       <div className="container py-16">
         <div className="max-w-xl mx-auto shadow rounded px-3 py-4 overflow-hidden">
           <h2 className="text-2xl font-medium capitalize mb-1">login</h2>
           <p className="text-gray-500 text-sm mb-6">login if you are returing customer</p>
-          <form action="">
+          <form action="" onSubmit={handelSubmit}>
             <div className="space-y-5">
               <div>
-                <label for="email" className="text-gray-600 text-md mb-2 capitalize block">email address</label>
-                <Input type="email" className="block text-sm w-full border border-gray-300 rounded px-4 py-3 focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="email@gmail.com" />
+                <label for="username" className="text-gray-600 text-md mb-2 capitalize block">User Name</label>
+                <Input id="username" type="text" value={userName} onKeyUpHandeler={(e) => setUserName(e.target.value)} className="block text-sm w-full border border-gray-300 rounded px-4 py-3 focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="email@gmail.com" />
               </div>
               <div>
                 <label for="password" className="text-gray-600 text-md mb-2 capitalize block">password</label>
-                <Input type="password" className="block text-sm w-full border border-gray-300 rounded px-4 py-3 focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="*********" />
+                <Input type="password" onKeyUpHandeler={(e) => setPassword(e.target.value)} value={password} className="block text-sm w-full border border-gray-300 rounded px-4 py-3 focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="*********" />
               </div>
               <div className="flex items-center justify-between mt-6">
                 <div className="flex items-center gap-2">

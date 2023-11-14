@@ -7,6 +7,7 @@ import SearchProduct from "./SearchProduct"
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
+import { NavLink } from 'react-router-dom'
 library.add(fab, fas, far)
 
 export default function Header() {
@@ -37,7 +38,7 @@ export default function Header() {
             </a>
             <a href="#" className="text-center text-gray-700 hover:text-primary transition relative">
               <div className="text-2xl">
-                <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
+               <NavLink to="/cart" > <FontAwesomeIcon icon="fa-solid fa-cart-shopping" /></NavLink>
               </div>
               <div className="text-xs leading-3">Cart</div>
               <span

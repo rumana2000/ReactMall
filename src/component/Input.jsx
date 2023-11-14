@@ -1,8 +1,8 @@
 
-export default function Input({ className, ...rest }) {
+export default function Input({ className, onKeyUpHandeler, ...rest }) {
   return (
     <>
-      <input className={className} {...rest} />
+      <input onChange={onKeyUpHandeler} className={className} {...rest} />
     </>
   )
 }
