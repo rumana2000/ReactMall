@@ -42,9 +42,6 @@ export default function Nav() {
             <NavLink to="/shop" className="text-white">shop</NavLink>
             <NavLink to="/about" className="text-white">about us</NavLink>
             <NavLink to="/contact" className="text-white">contact us</NavLink>
-            <div className="flex justify-center items-center">
-              <NavLink to="/login" className="text-gray-200 capitalize hover:text-white transition">login/register</NavLink>
-            </div>
           </div>
         </div>
       </nav>

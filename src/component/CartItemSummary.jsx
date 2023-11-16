@@ -1,19 +1,19 @@
-import {useState } from "react"
+import { useEffect, useState } from "react"
 
-export default function CartItemSummary({item}) {
-  const [totalProductPrice, setTotalProductPrice] = useState([])
+export default function CartItemSummary({ item}) {
 
-   console.log(item);
- 
-  return(
+
+
+  return (
     <>
-    <div className="flex items-center justify-between gap-3 py-3">
-          <div>
+      <div className="flex items-center justify-between gap-3 py-3">
+        <div>
           <p className="text-xl text-gray-800">{item.title}</p>
           <p className="text-gray-800 text-md">${item.price} X {item.quantity}</p>
-          </div>
-          <p className="text-gray-800 text-md">${item.price * item.quantity}</p>
         </div>
+        <p className="text-gray-800 text-md">${item.price * item.quantity}</p>
+      </div>
+     
     </>
   )
 }

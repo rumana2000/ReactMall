@@ -1,11 +1,12 @@
 
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { useRef } from "react"
 import Rating from "./Rating"
 import Input from "./Input"
 import { LOCALSTORAGE_CART_KEY, LOCALSTORAGE_AUTH_USER_KEY } from "../constant";
+import { CartContext } from "../contexts/CartContext"
 
 
 
@@ -15,6 +16,7 @@ export default function ProductDetails() {
   const [quantity, setQuantity] = useState(1)
   const imgPreviewRef = useRef(0)
   let navigate = useNavigate()
+  const { setCartItemCount } = useContext(CartContext)
 
   let setPreviewImg = (e) => {
     console.log(e.target.getAttribute('src'));
@@ -57,12 +59,23 @@ export default function ProductDetails() {
         let res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/carts/add`, cartRequestPayload)
         if (res.data) {
           let newProduct = res.data.products[0]
-          let cartItem = {}
+          let cartItem = []
           if (localStorage.getItem(LOCALSTORAGE_CART_KEY)) {
             cartItem = JSON.parse(localStorage.getItem(LOCALSTORAGE_CART_KEY))
           }
-          cartItem[newProduct.id] = newProduct
-          localStorage.setItem(LOCALSTORAGE_CART_KEY, JSON.stringify(cartItem))
+
+          let exists = false
+          for (let index = 0; index < cartItem.length; index++) {
+            if (newProduct.id == cartItem[index].id) {
+              exists = true
+            }
+          }
+          if (!exists) {
+            cartItem.push(newProduct)
+            localStorage.setItem(LOCALSTORAGE_CART_KEY, JSON.stringify(cartItem))
+            setCartItemCount(cartItem.length)
+          }
+
           return navigate("/cart")
 
         }
