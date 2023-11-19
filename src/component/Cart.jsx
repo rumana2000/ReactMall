@@ -61,7 +61,6 @@ export default function Cart() {
           break
         }
       }
-
       if (hasSelected) {
         let tmpItems = selectedCartItem
         tmpItems.splice(foundIdx, 1)
@@ -69,8 +68,6 @@ export default function Cart() {
       } else {
         setSelectedCartItem(prev => [...prev, selectedCartItemProduct])
       }
-
-
     }
 
   }
@@ -87,7 +84,7 @@ export default function Cart() {
           <div className="container py-6 border border-gray-400 rounded-md w-2/5 h-full">
             <div className="">
               <p className="text-gray-800 text-3xl capitalize">oder summary</p>
-              {selectedCartItem && selectedCartItem.map((item => <CartItemSummary item={item}  />))}
+              {selectedCartItem && selectedCartItem.map((item => <CartItemSummary item={item} />))}
               <hr className="text-gray-400" />
               <div className="flex items-center justify-between py-3">
               {selectedCartItem.length == 0 ?  (<p className="flex items-center justify-center text-gray-700 text-sm capitalize mt-5">{`Summary is empty! :(`}</p>) : (<SelectCartItemPrice selectedCartItem = {selectedCartItem}/>)}
@@ -95,7 +92,6 @@ export default function Cart() {
               <div className="mt-10">
                 <button type="button"  className="w-4/5 bg-primary border text-white flex items-center  ml-12 justify-center h-12 border-primary rounded-md">Place Oder</button>
               </div>
-
             </div>
           </div>
         </div>

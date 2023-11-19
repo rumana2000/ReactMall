@@ -60,14 +60,14 @@ export default function SingleProduct({ productInfo }) {
 
   return (
     <>
-      <div className="bg-white shadow rounded overflow-hidden">
+      <div className="bg-white shadow rounded overflow-hidden max-w-md">
         {/* <!-- product image --> */}
         <NavLink to={`/products/${productInfo.id}`}>
           <div className="flex items-center justify-center">
             <img src={productInfo.thumbnail} alt="" className="object-contain h-48 w-96" />
           </div>
           {/* <!-- product contant --> */}
-          <div className="pt-4 pb-4 px-4">
+          <div className="pt-4 pb-4 px-4 max-w-md">
             <a href="">
               <h4 className="uppercase text-gray-800 text-sm hover:text-primary transition ">{productInfo.title}</h4>
             </a>

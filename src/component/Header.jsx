@@ -52,7 +52,7 @@ export default function Header() {
               </div>
               <div className="text-xs leading-3">Cart</div>
               <span
-                className="text-xs absolute -right-3 -top-1 flex  w-5 h-5 rounded-full bg-primary item-center justify-center text-white">{cartItemCount}</span>
+                className="text-xs absolute -right-3 -top-2 flex w-5 h-5 rounded-full bg-primary text-center item-center justify-center text-white">{cartItemCount}</span>
             </a>
             <div className="text-center text-gray-700 hover:text-primary transition relative">
               <div className="text-2xl">
