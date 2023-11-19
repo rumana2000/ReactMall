@@ -60,14 +60,14 @@ export default function SingleProduct({ productInfo }) {
 
   return (
     <>
-      <div className="bg-white shadow rounded overflow-hidden max-w-md">
+      <div className="bg-white shadow rounded overflow-hidden max-w-md max-h-md">
         {/* <!-- product image --> */}
         <NavLink to={`/products/${productInfo.id}`}>
           <div className="flex items-center justify-center">
             <img src={productInfo.thumbnail} alt="" className="object-contain h-48 w-96" />
           </div>
           {/* <!-- product contant --> */}
-          <div className="pt-4 pb-4 px-4 max-w-md">
+          <div className="pt-4 pb-4 px-4 min-w-md min-h-md">
             <a href="">
               <h4 className="uppercase text-gray-800 text-sm hover:text-primary transition ">{productInfo.title}</h4>
             </a>
@@ -82,7 +82,7 @@ export default function SingleProduct({ productInfo }) {
             </div>
           </div>
         </NavLink>
-        <button type="button" className="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b" onClick={() => selectedProductHandler(productInfo.id)}>Add to Cart</button>
+        <button type="button" className="block  w-full py-1 text-center text-white bg-primary border border-primary rounded-b" onClick={() => selectedProductHandler(productInfo.id)}>Add to Cart</button>
       </div>
     </>
   )

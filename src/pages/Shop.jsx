@@ -12,9 +12,6 @@ export default function Shop() {
   const [currentPage, setCurrentPage] = useState(0)
   const [perPage, setPerPage] = useState(12)
 
-
-  // const []
-
   useEffect(() => {
     (async () => {
       let res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/products/categories`)
@@ -34,11 +31,11 @@ export default function Shop() {
   let categoryFilterOnChnageHanderler = async (e) => {
     let res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/products/category/${e.target.value}`)
     setCategoryProducts(res.data.products)
+    setTotalProduct(res.data.total)
   }
 
   let setPanigationPage = (index) => {
     setCurrentPage(index - 1)
-
   }
 
   let nextPageHandler = () => {
@@ -67,7 +64,8 @@ export default function Shop() {
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {categoryProducts && categoryProducts.map(product => <SingleProduct productInfo={product} />)}
           </div>
-          {categoryProducts && <Pagination numberOfPanination={Math.ceil(totalProduct / perPage)} pgh={setPanigationPage} currentPage={currentPage} nextPageHandler={nextPageHandler} previousPageHandler={previousPageHandler} />}
+          {totalProduct > perPage && <Pagination numberOfPanination={Math.ceil(totalProduct / perPage)} pgh={setPanigationPage} currentPage={currentPage} nextPageHandler={nextPageHandler} previousPageHandler={previousPageHandler} /> }
+          {/* {categoryProducts && } */}
         </div>
       </div>
 
