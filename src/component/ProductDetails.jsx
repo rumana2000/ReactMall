@@ -5,8 +5,10 @@ import axios from "axios"
 import { useRef } from "react"
 import Rating from "./Rating"
 import Input from "./Input"
-import { LOCALSTORAGE_CART_KEY, LOCALSTORAGE_AUTH_USER_KEY } from "../constant";
+import { LOCALSTORAGE_CART_KEY} from "../constant";
 import { CartContext } from "../contexts/CartContext"
+import { AuthContext } from "../contexts/AuthContext"
+
 
 
 
@@ -15,6 +17,7 @@ export default function ProductDetails() {
   const [productInfo, setProductInfo] = useState([])
   const [quantity, setQuantity] = useState(1)
   const imgPreviewRef = useRef(0)
+  const { authUserLogin } = useContext(AuthContext)
   let navigate = useNavigate()
   const { setCartItemCount } = useContext(CartContext)
 
@@ -43,7 +46,7 @@ export default function ProductDetails() {
   }
 
   let addCartItemHandler = async (productInfo) => {
-    let authUser = localStorage.getItem(LOCALSTORAGE_AUTH_USER_KEY);
+    let authUser = localStorage.getItem(authUserLogin);
     if (authUser) {
       authUser = JSON.parse(authUser)
       const cartRequestPayload = {

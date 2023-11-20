@@ -1,22 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Input from "../component/Input";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {LOCALSTORAGE_AUTH_USER_KEY} from "../constant"
+import { AuthContext } from "../contexts/AuthContext";
+import { LOCALSTORAGE_AUTH_USER_KEY } from "../constant";
 
 export default function LogIn() {
   const [userName, setUserName] = useState('kminchelle')
   const [password, setPassword] = useState('0lelplR')
+  const { auth, setAuth } = useContext(AuthContext)
   let navigate = useNavigate()
 
     useEffect(() => {
-      let authUser = localStorage.getItem(LOCALSTORAGE_AUTH_USER_KEY);
-      console.log(authUser);
-      if (authUser) {
+      if (auth) {
         return navigate("/")
-
-      }else {
-        return navigate("/login")
       }
     },[])
 
@@ -30,11 +27,10 @@ export default function LogIn() {
         password: password
       })
       if (res.data.token) {
-        console.log(res.data);
         localStorage.setItem(LOCALSTORAGE_AUTH_USER_KEY, JSON.stringify(res.data))
+        setAuth(res.data)
         return navigate("/")
       }
-      console.log(res.data);
     } catch (err) {
       console.log(err.response.data.message);
     }

@@ -78,7 +78,7 @@ export default function Cart() {
         <div className="flex  gap-5">
           <div className="border border-gray-200 rounded-md w-9/12">
             <div className="grid grid-cols-3 gap-4 py-5 items-center justify-between">
-              {cartItem && cartItem.map((item => <CartItem item={item} selectCartItem={selectCartItemHandeler} selectedDeletedItem={deleteItemHandler} />))}
+              {cartItem .length == 0 ?(<p className="text-gray-800 text-3xl capitalize flex items-center justify-center py-16 ">your cart is empty!</p>) : cartItem.map((item => <CartItem item={item} selectCartItem={selectCartItemHandeler} selectedDeletedItem={deleteItemHandler} />))}
             </div>
           </div>
           <div className="container py-6 border border-gray-400 rounded-md w-2/5 h-full">
