@@ -18,7 +18,7 @@ export default function ShimmerEffectSingle() {
             <div className="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
           </div>
         </div>
-        <button className="sr-only">Loading...</button>
+        <button className="sr-only">Add to Cart...</button>
       </div>
 
     </>
