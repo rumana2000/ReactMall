@@ -9,12 +9,15 @@ export default function Rating({ ratings }) {
   useEffect(() => {
     let rateRound = Math.floor(ratings)
     let rateFloat = ratings - rateRound
+    let ratingTmp = ratingState
     for (let i = 0; i < rateRound; i++) {
-      ratingState[i] = 'full'
+      ratingTmp[i] = 'full'
     }
     if (rateFloat > 0) {
-      ratingState[rateRound] = 'half'
+      ratingTmp[rateRound] = 'half'
     }
+
+    setRatingState([...ratingTmp])
   }, [ratings])
   return (
     <>

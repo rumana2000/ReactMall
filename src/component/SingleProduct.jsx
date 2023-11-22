@@ -58,16 +58,16 @@ export default function SingleProduct({ productInfo }) {
 
   return (
     <>
-      <div className="bg-white shadow rounded overflow-hidden">
+      <div className="bg-white shadow rounded overflow-hidden max-w-md max-h-md">
         {/* <!-- product image --> */}
         <NavLink to={`/products/${productInfo.id}`}>
           <div className="flex items-center justify-center">
             <img src={productInfo.thumbnail} alt="" className="object-contain h-48 w-96" />
           </div>
           {/* <!-- product contant --> */}
-          <div className="pt-4 pb-4 px-4">
-            <a href="">
-              <h4 className="uppercase text-gray-800 text-sm hover:text-primary transition ">{productInfo.title}</h4>
+          <div className="py-3 mt-2 p-1">
+          <a href="">
+              <h4 className="uppercase text-gray-800 mt-3  text-sm hover:text-primary transition ">{productInfo.title}</h4>
             </a>
             <div className="flex mb-1 space-x-2 font-roboto">
               <p className="text-primary text-xl font-semibold">${productInfo.price}</p>
@@ -76,7 +76,7 @@ export default function SingleProduct({ productInfo }) {
               <div className="flex text-xm text-yellow-400">
                 <Rating ratings={productInfo.rating} />
               </div>
-              <div className="text-xs text-gray-500 ml-3">({productInfo.stock})</div>
+              <div className="text-xs  text-gray-500 ml-3">({productInfo.stock})</div>
             </div>
           </div>
         </NavLink>
