@@ -1,7 +1,9 @@
+
 export default function Pagination({numberOfPanination, pgh, currentPage, nextPageHandler, previousPageHandler}) {
 
   let setPagination = (index) => {
     pgh(index)
+    
   }
 
   let getPaginationItem = () => {

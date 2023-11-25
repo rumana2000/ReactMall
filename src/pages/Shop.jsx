@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Sideber from "../component/Sideber"
 import SingleProduct from "../component/SingleProduct"
 import Pagination from "../component/Pagination"
+import ShopShimmerEffect from "../component/ShopShimmerEffect"
 
 export default function Shop() {
   const [allCatagorys, setAllCatagorys] = useState([])
@@ -11,6 +12,10 @@ export default function Shop() {
   const [totalProduct, setTotalProduct] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [perPage, setPerPage] = useState(12)
+  const [loader, setLoader] = useState(false)
+
+
+
 
   useEffect(() => {
     (async () => {
@@ -22,9 +27,11 @@ export default function Shop() {
 
   useEffect(() => {
     (async () => {
+      setLoader(true)
       let res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/products?limit=${perPage}&skip=${currentPage * perPage}`)
       setCategoryProducts(res.data.products)
       setTotalProduct(res.data.total)
+      setLoader(false)
     })();
   }, [currentPage])
 
@@ -42,6 +49,7 @@ export default function Shop() {
     let totalPage = Math.ceil(totalProduct / perPage) - 1
     if (currentPage < totalPage) {
       setCurrentPage(currentPage + 1)
+
     }
   }
 
@@ -50,7 +58,6 @@ export default function Shop() {
     if (currentPage < totalPage && currentPage > 0) {
       setCurrentPage(currentPage - 1)
     }
-
   }
 
   return (
@@ -61,11 +68,11 @@ export default function Shop() {
       <div className="container grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6 pt-6 pb-16 items-start">
         <Sideber allCatagorys={allCatagorys} categoryRadioFilterOnChnage={categoryFilterOnChnageHanderler} />
         <div className="col-span-3">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+          {loader ? <ShopShimmerEffect /> : (<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {categoryProducts && categoryProducts.map(product => <SingleProduct productInfo={product} />)}
-          </div>
-          {totalProduct > perPage && <Pagination numberOfPanination={Math.ceil(totalProduct / perPage)} pgh={setPanigationPage} currentPage={currentPage} nextPageHandler={nextPageHandler} previousPageHandler={previousPageHandler} /> }
-          {/* {categoryProducts && } */}
+          </div>)}
+
+          {totalProduct > perPage && <Pagination numberOfPanination={Math.ceil(totalProduct / perPage)} pgh={setPanigationPage} currentPage={currentPage} nextPageHandler={nextPageHandler} previousPageHandler={previousPageHandler} />}
         </div>
       </div>
 

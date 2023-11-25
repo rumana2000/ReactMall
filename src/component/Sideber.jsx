@@ -1,6 +1,6 @@
 import ShopRadioFilter from "./ShopRadioFilter"
 
-export default function Sideber({ allCatagorys, categoryRadioFilterOnChnage }) {
+export default function Sideber({ allCatagorys, categoryRadioFilterOnChnage}) {
   return (
     <>
       <div className="col-span-1 shadow px-4 py-5 pb-6 rounded bg-white overflow-hidden">
