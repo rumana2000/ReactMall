@@ -46,7 +46,6 @@ export default function SingleProduct({ productInfo }) {
             setCartItemCount(cartItem.length)
           }
           toast.success('1 new item(s) have been added to your cart!')
-          console.log(cartItem);
         }
       } catch (err) {
         console.log(err.res.data.message);

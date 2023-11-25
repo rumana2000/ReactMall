@@ -8,6 +8,7 @@ import Input from "./Input"
 import { LOCALSTORAGE_CART_KEY} from "../constant";
 import { CartContext } from "../contexts/CartContext"
 import { AuthContext } from "../contexts/AuthContext"
+import { toast } from 'react-toastify';
 
 
 
@@ -45,7 +46,7 @@ export default function ProductDetails() {
    }
   }
 
-  let addCartItemHandler = async (productInfo) => {
+  let buyCartItemHandler = async (productInfo) => {
     let authUser = localStorage.getItem(authUserLogin);
     if (authUser) {
       authUser = JSON.parse(authUser)
@@ -79,7 +80,55 @@ export default function ProductDetails() {
             setCartItemCount(cartItem.length)
           }
 
-          return navigate("/cart")
+        }
+        return navigate("/cart")
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      return navigate("/login")
+    }
+  }
+
+
+
+  let addCartItemHandler = async (productInfo) => {
+    let authUser = localStorage.getItem(authUserLogin);
+    if (authUser) {
+      authUser = JSON.parse(authUser)
+      const cartRequestPayload = {
+        userId: authUser.id,
+        products: [
+          {
+            id: productId,
+            quantity: quantity,
+          }
+        ]
+      }
+      try {
+        let res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/carts/add`, cartRequestPayload)
+        if (res.data) {
+          let newProduct = res.data.products[0]
+          let cartItem = []
+          if (localStorage.getItem(LOCALSTORAGE_CART_KEY)) {
+            cartItem = JSON.parse(localStorage.getItem(LOCALSTORAGE_CART_KEY))
+          }
+
+          let exists = false
+          for (let index = 0; index < cartItem.length; index++) {
+            if (newProduct.id == cartItem[index].id) {
+              exists = true
+              toast.info('item(s) have been already added to your cart!')
+
+            }
+          }
+          if (!exists) {
+            cartItem.push(newProduct)
+            localStorage.setItem(LOCALSTORAGE_CART_KEY, JSON.stringify(cartItem))
+            setCartItemCount(cartItem.length)
+            toast.success('1 new item(s) have been added to your cart!')
+
+          }
 
         }
 
@@ -124,8 +173,9 @@ export default function ProductDetails() {
               <button disabled ={quantity >= productInfo.stock} className="disabled:bg-gray-200 disabled:border-gray-200 disabled:text-black border border-primary rounded-md flex items-center justify-center bg-primary text-white hover:bg-white hover:text-primary w-10 h-10" onClick={incrimentItem}> + </button>
               </div>
              </div>
-             <div className="py-6">
-             <button className="border border-primary rounded-md flex items-center justify-center hover:bg-primary hover:text-white bg-white text-primary  w-2/5 h-16" onClick={() => addCartItemHandler(productInfo)}> Add to Cart</button>
+             <div className="flex gap-4 py-6">
+             <button className="border border-sky-400  rounded-md flex items-center justify-center bg-sky-400 text-white  w-2/5 h-16" onClick={() => buyCartItemHandler(productInfo)}>Buy Now</button>
+             <button className="border border-primary rounded-md flex items-center justify-center bg-primary text-white w-2/5 h-16" onClick={() => addCartItemHandler(productInfo)}> Add to Cart</button>
              </div>
           </div>
         </div>
