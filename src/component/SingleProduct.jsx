@@ -38,14 +38,15 @@ export default function SingleProduct({ productInfo }) {
           for (let index = 0; index < cartItem.length; index++) {
             if (newProduct.id == cartItem[index].id) {
               exists = true
+              toast.info('item(s) have been already added to your cart!')
             }
           }
           if (!exists) {
             cartItem.push(newProduct)
             localStorage.setItem(LOCALSTORAGE_CART_KEY, JSON.stringify(cartItem))
             setCartItemCount(cartItem.length)
+            toast.success('1 new item(s) have been added to your cart!')
           }
-          toast.success('1 new item(s) have been added to your cart!')
         }
       } catch (err) {
         console.log(err.res.data.message);

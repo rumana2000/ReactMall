@@ -36,9 +36,12 @@ export default function Shop() {
   }, [currentPage])
 
   let categoryFilterOnChnageHanderler = async (e) => {
+    setLoader(true)
     let res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/products/category/${e.target.value}`)
     setCategoryProducts(res.data.products)
     setTotalProduct(res.data.total)
+    setLoader(false)
+
   }
 
   let setPanigationPage = (index) => {
