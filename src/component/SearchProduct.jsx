@@ -30,12 +30,12 @@ export default function SearchProduct() {
   }
 
   let searchProductRedirectHandeler = () => {
-    searchinputRef(() => {
-      inputRef.current = ''
-    })
-    setSearchQuery([])
-    setProducts([])
-  }
+    if (searchinputRef.current) {
+        searchinputRef.current.value = ''; // Assuming you want to clear the input value
+    }
+    setSearchQuery('');
+    setProducts([]);
+}
 
 
 

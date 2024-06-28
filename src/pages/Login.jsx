@@ -6,8 +6,8 @@ import { AuthContext } from "../contexts/AuthContext";
 import { LOCALSTORAGE_AUTH_USER_KEY } from "../constant";
 
 export default function LogIn() {
-  const [userName, setUserName] = useState('kminchelle')
-  const [password, setPassword] = useState('0lelplR')
+  const [userName, setUserName] = useState('emilys')
+  const [password, setPassword] = useState('emilyspass')
   const { auth, setAuth } = useContext(AuthContext)
   let navigate = useNavigate()
 

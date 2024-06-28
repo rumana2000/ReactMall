@@ -32,6 +32,9 @@ export default function Product() {
     setCurrentIndex((prevIndex) => prevIndex + 1)
   }
 
+
+
+
   return (
     <>
       <InfiniteScroll
